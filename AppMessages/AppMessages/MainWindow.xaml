@@ -9,7 +9,46 @@
     mc:Ignorable="d"
     Title="AppMessages">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Row="0" Padding="20" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="20" Margin="10">
+            <TextBox  x:Name="ToTextBox" Text="{Binding SentTo}" Header="To" PlaceholderText="Phone number"/>
+            <TextBox  x:Name="MessageTextBox" Text="{Binding Message}" Header="Message" PlaceholderText="Type your message"/>
+            <Button  x:Name="SendButton" Content="Send" Click="SendButton_Click" CornerRadius="100" Background="#65C065"/>
+        </StackPanel>
+
+        <ListView Grid.Row="1" Margin="5,10" 
+              x:Name="MessagesListView" 
+              Header="Previous Messages" 
+              BorderBrush="LightGray"
+              BorderThickness="1"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              ItemsSource="{Binding Messages}">
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="To" Width="100"/>
+                        <TextBlock Text="Message" Width="200"/>
+                        <TextBlock Text="Date/Time" Width="150"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding SentTo}" Width="100" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding MessageText}" Width="200" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Created}" Width="150" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
 </Window>
