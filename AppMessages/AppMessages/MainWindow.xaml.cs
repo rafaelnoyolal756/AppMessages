@@ -79,7 +79,7 @@ namespace AppMessages
             var messageSent = await MessageResource.CreateAsync(
                 body: message,
                 from: new Twilio.Types.PhoneNumber("+17069673030"),
-                to: new Twilio.Types.PhoneNumber("+18777804236")
+                to: new Twilio.Types.PhoneNumber(sentto.ToString())
                 );
 
             ToTextBox.Text = messageSent.Status.ToString();
