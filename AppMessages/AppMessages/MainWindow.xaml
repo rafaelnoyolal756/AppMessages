@@ -17,6 +17,7 @@
 
 
         <StackPanel Grid.Row="0" Padding="20" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="20" Margin="10">
+            <TextBox  x:Name="FromTextBox" Header="From" PlaceholderText="Phone number"/>
             <TextBox  x:Name="ToTextBox" Text="{Binding SentTo}" Header="To" PlaceholderText="Phone number"/>
             <TextBox  x:Name="MessageTextBox" Text="{Binding Message}" Header="Message" PlaceholderText="Type your message"/>
             <Button  x:Name="SendButton" Content="Send" Click="SendButton_Click" CornerRadius="100" Background="#65C065"/>

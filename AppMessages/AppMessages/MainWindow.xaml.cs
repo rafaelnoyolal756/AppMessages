@@ -59,11 +59,12 @@ namespace AppMessages
         {
 
             string sentto = ToTextBox.Text; string message = MessageTextBox.Text;
+            string from = FromTextBox.Text;
 
             // Validate input
-            if (string.IsNullOrEmpty(sentto) || string.IsNullOrEmpty(message))
+            if (string.IsNullOrEmpty(sentto) || string.IsNullOrEmpty(message) || string.IsNullOrEmpty(from))
             {
-                await new Windows.UI.Popups.MessageDialog("To and Message fields cannot be empty.").ShowAsync();
+                await new Windows.UI.Popups.MessageDialog("From and To and Message fields cannot be empty.").ShowAsync();
                 return;
             }
 
@@ -78,7 +79,7 @@ namespace AppMessages
 
             var messageSent = await MessageResource.CreateAsync(
                 body: message,
-                from: new Twilio.Types.PhoneNumber("+17069673030"),
+                from: new Twilio.Types.PhoneNumber(from.ToString()),
                 to: new Twilio.Types.PhoneNumber(sentto.ToString())
                 );
 
